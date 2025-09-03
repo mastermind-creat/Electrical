@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Engineer Brian - Electrical & Solar Solutions</title>
+    <meta
+      name="description"
+      content="Professional electrical and solar installation services by certified Engineer Brian. Safe, reliable, and sustainable energy solutions for homes and businesses."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.iife.min.js"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                light: "#FFD700",
+                DEFAULT: "#FFD700",
+                dark: "#E5BF00",
+              },
+              secondary: {
+                light: "#1E90FF",
+                DEFAULT: "#1E90FF",
+                dark: "#0E70CC",
+              },
+              neutral: {
+                light: "#F5F5F5",
+                DEFAULT: "#1C1C1C",
+                dark: "#121212",
+              },
+              accent: {
+                light: "#1C1C1C",
+                DEFAULT: "#FFFFFF",
+                dark: "#E5E5E5",
+              },
+            },
+            fontFamily: {
+              heading: ["Poppins", "sans-serif"],
+              body: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #1c1c1c;
+        color: #ffffff;
+        transition: background-color 0.3s, color 0.3s;
+      }
+      body.light {
+        background-color: #ffffff;
+        color: #1c1c1c;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Poppins", sans-serif;
+      }
+      .electric-bg {
+        background: radial-gradient(
+          circle,
+          rgba(255, 215, 0, 0.1) 0%,
+          rgba(30, 144, 255, 0.05) 50%,
+          rgba(28, 28, 28, 1) 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+      .light .electric-bg {
+        background: radial-gradient(
+          circle,
+          rgba(255, 215, 0, 0.05) 0%,
+          rgba(30, 144, 255, 0.03) 50%,
+          rgba(245, 245, 245, 1) 100%
+        );
+      }
+      .electric-bg::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            circle at 20% 30%,
+            rgba(255, 215, 0, 0.15) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 70%,
+            rgba(30, 144, 255, 0.15) 0%,
+            transparent 50%
+          );
+        animation: pulse 4s ease-in-out infinite;
+        pointer-events: none;
+      }
+      .light .electric-bg::before {
+        background: radial-gradient(
+            circle at 20% 30%,
+            rgba(255, 215, 0, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 70%,
+            rgba(30, 144, 255, 0.1) 0%,
+            transparent 50%
+          );
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 0.8;
+        }
+      }
+      .service-card {
+        transition: all 0.3s ease;
+      }
+      .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(255, 215, 0, 0.3);
+      }
+      .light .service-card:hover {
+        box-shadow: 0 10px 25px -5px rgba(255, 215, 0, 0.2);
+      }
+      .testimonial-slide {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        position: absolute;
+        width: 100%;
+      }
+      .testimonial-slide.active {
+        opacity: 1;
+        position: relative;
+      }
+      .floating-whatsapp {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        z-index: 100;
+        animation: float 3s ease-in-out infinite;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      .theme-toggle {
+        transition: all 0.3s ease;
+      }
+      .carousel-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 0.5rem;
+      }
+      .carousel-track {
+        display: flex;
+        transition: transform 0.5s ease;
+      }
+      .carousel-slide {
+        min-width: 100%;
+        position: relative;
+      }
+      .carousel-nav {
+        position: absolute;
+        bottom: 1rem;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        z-index: 10;
+      }
+      .carousel-dot {
+        width: 0.75rem;
+        height: 0.75rem;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .carousel-dot.active {
+        background-color: #ffd700;
+      }
+      .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 10;
+        transition: background-color 0.3s;
+      }
+      .carousel-btn:hover {
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+      .carousel-btn.prev {
+        left: 1rem;
+      }
+      .carousel-btn.next {
+        right: 1rem;
+      }
+      .light .carousel-dot {
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+      .light .carousel-dot.active {
+        background-color: #ffd700;
+      }
+      .light .carousel-btn {
+        background-color: rgba(255, 255, 255, 0.7);
+        color: #1c1c1c;
+      }
+      .light .carousel-btn:hover {
+        background-color: rgba(255, 255, 255, 0.9);
+      }
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+      .portfolio-item {
+        border-radius: 0.5rem;
+        overflow: hidden;
+        position: relative;
+        height: 250px;
+      }
+      .portfolio-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+      .portfolio-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.8) 0%,
+          transparent 100%
+        );
+        display: flex;
+        align-items: flex-end;
+        padding: 1.5rem;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .portfolio-item:hover .portfolio-overlay {
+        opacity: 1;
+      }
+      .portfolio-item:hover .portfolio-image {
+        transform: scale(1.05);
+      }
+      .light .portfolio-overlay {
+        background: linear-gradient(
+          to top,
+          rgba(255, 255, 255, 0.9) 0%,
+          transparent 100%
+        );
+      }
+    </style>
+  </head>
+  <body class="dark">
+    <!-- Navigation -->
+    <nav
+      class="fixed w-full bg-neutral dark:bg-neutral-dark bg-opacity-90 backdrop-blur-sm z-50 py-4 px-6"
+    >
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="#" class="text-2xl font-bold text-primary dark:text-primary"
+          >Engineer Brian</a
+        >
+        <div class="hidden md:flex space-x-8">
+          <a
+            href="#home"
+            class="text-accent dark:text-accent-dark hover:text-primary transition"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="text-accent dark:text-accent-dark hover:text-primary transition"
+            >About</a
+          >
+          <a
+            href="#services"
+            class="text-accent dark:text-accent-dark hover:text-primary transition"
+            >Services</a
+          >
+          <a
+            href="#portfolio"
+            class="text-accent dark:text-accent-dark hover:text-primary transition"
+            >Portfolio</a
+          >
+          <a
+            href="#testimonials"
+            class="text-accent dark:text-accent-dark hover:text-primary transition"
+            >Testimonials</a
+          >
+          <a
+            href="#contact"
+            class="text-accent dark:text-accent-dark hover:text-primary transition"
+            >Contact</a
+          >
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="relative">
+            <button
+              id="themeDropdownButton"
+              class="theme-toggle p-2 rounded-full bg-primary dark:bg-primary text-neutral dark:text-neutral-dark"
+            >
+              <i data-feather="settings" class="w-5 h-5"></i>
+            </button>
+            <div
+              id="themeDropdown"
+              class="absolute right-0 mt-2 w-40 bg-neutral dark:bg-neutral-dark rounded-md shadow-lg py-1 hidden z-50"
+            >
+              <button
+                data-theme="light"
+                class="flex items-center px-4 py-2 text-sm text-accent dark:text-accent-dark hover:bg-neutral-dark dark:hover:bg-neutral w-full text-left"
+              >
+                <i data-feather="sun" class="w-4 h-4 mr-2"></i> Light
+              </button>
+              <button
+                data-theme="dark"
+                class="flex items-center px-4 py-2 text-sm text-accent dark:text-accent-dark hover:bg-neutral-dark dark:hover:bg-neutral w-full text-left"
+              >
+                <i data-feather="moon" class="w-4 h-4 mr-2"></i> Dark
+              </button>
+              <button
+                data-theme="system"
+                class="flex items-center px-4 py-2 text-sm text-accent dark:text-accent-dark hover:bg-neutral-dark dark:hover:bg-neutral w-full text-left"
+              >
+                <i data-feather="monitor" class="w-4 h-4 mr-2"></i> System
+              </button>
+            </div>
+          </div>
+          <div class="md:hidden">
+            <button id="mobileMenuButton">
+              <i
+                data-feather="menu"
+                class="text-accent dark:text-accent-dark"
+              ></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        id="mobileMenu"
+        class="hidden md:hidden bg-neutral dark:bg-neutral-dark mt-4 py-4 px-6 rounded-lg"
+      >
+        <a
+          href="#home"
+          class="block py-2 text-accent dark:text-accent-dark hover:text-primary"
+          >Home</a
+        >
+        <a
+          href="#about"
+          class="block py-2 text-accent dark:text-accent-dark hover:text-primary"
+          >About</a
+        >
+        <a
+          href="#services"
+          class="block py-2 text-accent dark:text-accent-dark hover:text-primary"
+          >Services</a
+        >
+        <a
+          href="#portfolio"
+          class="block py-2 text-accent dark:text-accent-dark hover:text-primary"
+          >Portfolio</a
+        >
+        <a
+          href="#testimonials"
+          class="block py-2 text-accent dark:text-accent-dark hover:text-primary"
+          >Testimonials</a
+        >
+        <a
+          href="#contact"
+          class="block py-2 text-accent dark:text-accent-dark hover:text-primary"
+          >Contact</a
+        >
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="electric-bg min-h-screen flex items-center pt-20">
+      <div class="container mx-auto px-6 py-20">
+        <div class="max-w-3xl" data-aos="fade-right">
+          <h1
+            class="text-4xl md:text-6xl font-bold mb-6 text-neutral-dark dark:text-accent"
+          >
+            Powering Your World with Safe & Reliable Solutions
+          </h1>
+          <p class="text-xl mb-8 text-neutral-dark dark:text-accent">
+            Certified electrical and solar installation expert delivering
+            sustainable energy solutions for homes and businesses across Kenya.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a
+              href="#contact"
+              class="bg-primary dark:bg-primary text-neutral dark:text-neutral-dark px-8 py-3 rounded-full font-semibold hover:bg-opacity-90 transition"
+              >Get a Quote</a
+            >
+            <a
+              href="https://wa.me/254700000000"
+              class="border-2 border-secondary dark:border-secondary text-secondary dark:text-secondary px-8 py-3 rounded-full font-semibold hover:bg-secondary hover:text-accent transition"
+              >Contact on WhatsApp</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-neutral-light dark:bg-neutral">
+      <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div data-aos="fade-right">
+            <h2
+              class="text-3xl md:text-4xl font-bold mb-6 text-neutral-dark dark:text-accent"
+            >
+              About Engineer Brian
+            </h2>
+            <p class="mb-4 text-neutral-dark dark:text-accent">
+              With over 10 years of experience in electrical engineering and
+              renewable energy systems, I bring expertise, safety, and
+              innovation to every project.
+            </p>
+            <p class="mb-6 text-neutral-dark dark:text-accent">
+              Certified by the Energy Regulatory Commission (ERC) and dedicated
+              to sustainable practices, I deliver reliable energy solutions that
+              power homes, businesses, and institutions across Kenya.
+            </p>
+            <div class="flex items-center space-x-4 mb-6">
+              <div class="bg-primary bg-opacity-20 p-3 rounded-full">
+                <i
+                  data-feather="award"
+                  class="text-primary dark:text-primary"
+                ></i>
+              </div>
+              <p class="text-neutral-dark dark:text-accent">
+                ERC Certified Electrical Engineer
+              </p>
+            </div>
+            <div class="flex items-center space-x-4">
+              <div class="bg-primary bg-opacity-20 p-3 rounded-full">
+                <i
+                  data-feather="shield"
+                  class="text-primary dark:text-primary"
+                ></i>
+              </div>
+              <p class="text-neutral-dark dark:text-accent">
+                Fully Insured & Compliance Certified
+              </p>
+            </div>
+          </div>
+          <div data-aos="fade-left" class="relative">
+            <div class="bg-primary h-80 w-80 rounded-full mx-auto"></div>
+            <div
+              class="absolute -bottom-4 -right-4 bg-secondary h-40 w-40 rounded-full"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white dark:bg-neutral-dark">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-4 text-neutral-dark dark:text-accent"
+          data-aos="fade-up"
+        >
+          Our Services
+        </h2>
+        <p
+          class="text-center max-w-2xl mx-auto mb-12 text-neutral-dark dark:text-accent"
+          data-aos="fade-up"
+        >
+          Comprehensive electrical and solar solutions tailored to your specific
+          needs
+        </p>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div
+            class="service-card bg-neutral-light dark:bg-neutral rounded-lg p-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div
+              class="bg-primary bg-opacity-20 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4"
+            >
+              <i data-feather="zap" class="text-primary dark:text-primary"></i>
+            </div>
+            <h3
+              class="text-xl font-semibold mb-2 text-neutral-dark dark:text-accent"
+            >
+              Electrical Installations
+            </h3>
+            <p class="text-neutral-dark dark:text-accent text-opacity-80">
+              Complete wiring, lighting, and power system installations for
+              homes and businesses.
+            </p>
+          </div>
+
+          <div
+            class="service-card bg-neutral-light dark:bg-neutral rounded-lg p-6"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div
+              class="bg-primary bg-opacity-20 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4"
+            >
+              <i data-feather="sun" class="text-primary dark:text-primary"></i>
+            </div>
+            <h3
+              class="text-xl font-semibold mb-2 text-neutral-dark dark:text-accent"
+            >
+              Solar Panel Installations
+            </h3>
+            <p class="text-neutral-dark dark:text-accent text-opacity-80">
+              Custom solar energy systems designed for efficiency and maximum
+              savings.
+            </p>
+          </div>
+
+          <div
+            class="service-card bg-neutral-light dark:bg-neutral rounded-lg p-6"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div
+              class="bg-primary bg-opacity-20 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4"
+            >
+              <i data-feather="tool" class="text-primary dark:text-primary"></i>
+            </div>
+            <h3
+              class="text-xl font-semibold mb-2 text-neutral-dark dark:text-accent"
+            >
+              Maintenance & Repairs
+            </h3>
+            <p class="text-neutral-dark dark:text-accent text-opacity-80">
+              Regular maintenance and emergency repair services to keep your
+              systems running smoothly.
+            </p>
+          </div>
+
+          <div
+            class="service-card bg-neutral-light dark:bg-neutral rounded-lg p-6"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <div
+              class="bg-primary bg-opacity-20 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4"
+            >
+              <i
+                data-feather="clipboard"
+                class="text-primary dark:text-primary"
+              ></i>
+            </div>
+            <h3
+              class="text-xl font-semibold mb-2 text-neutral-dark dark:text-accent"
+            >
+              Energy Consulting
+            </h3>
+            <p class="text-neutral-dark dark:text-accent text-opacity-80">
+              Expert advice on energy efficiency, system upgrades, and
+              cost-saving solutions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-neutral-light dark:bg-neutral">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-4 text-neutral-dark dark:text-accent"
+          data-aos="fade-up"
+        >
+          Our Projects
+        </h2>
+        <p
+          class="text-center max-w-2xl mx-auto mb-12 text-neutral-dark dark:text-accent"
+          data-aos="fade-up"
+        >
+          Showcasing our quality workmanship and successful installations
+        </p>
+
+        <!-- Image Carousel -->
+        <div class="carousel-container mb-12 h-96" data-aos="fade-up">
+          <div class="carousel-track h-full">
+            <!-- Carousel slides will be populated by JavaScript -->
+          </div>
+          <button class="carousel-btn prev">
+            <i data-feather="chevron-left"></i>
+          </button>
+          <button class="carousel-btn next">
+            <i data-feather="chevron-right"></i>
+          </button>
+          <div class="carousel-nav">
+            <!-- Carousel dots will be populated by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Portfolio Grid -->
+        <div class="portfolio-grid mb-12">
+          <!-- Portfolio items will be populated by JavaScript -->
+        </div>
+
+        <div class="text-center" data-aos="fade-up">
+          <button
+            id="viewMoreBtn"
+            class="inline-block border-2 border-primary text-primary dark:text-primary px-6 py-2 rounded-full hover:bg-primary hover:text-neutral transition"
+          >
+            View More Projects
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-20 bg-white dark:bg-neutral-dark">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-4 text-neutral-dark dark:text-accent"
+          data-aos="fade-up"
+        >
+          Why Choose Us
+        </h2>
+        <p
+          class="text-center max-w-2xl mx-auto mb-12 text-neutral-dark dark:text-accent"
+          data-aos="fade-up"
+        >
+          Excellence in every wire and panel we install
+        </p>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+            <div
+              class="bg-primary bg-opacity-20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i
+                data-feather="award"
+                class="text-primary dark:text-primary text-2xl"
+              ></i>
+            </div>
+            <h3
+              class="text-xl font-semibold mb-2 text-neutral-dark dark:text-accent"
+            >
+              Certified
+            </h3>
+            <p class="text-neutral-dark dark:text-accent text-opacity-80">
+              Fully licensed and certified by relevant authorities
+            </p>
+          </div>
+
+          <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+            <div
+              class="bg-primary bg-opacity-20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i
+                data-feather="clock"
+                class="text-primary dark:text-primary text-2xl"
+              ></i>
+            </div>
+            <h3
+              class="text-xl font-semibold mb-2 text-neutral-dark dark:text-accent"
+            >
+              Experienced
+            </h3>
+            <p class="text-neutral-dark dark:text-accent text-opacity-80">
+              Over a decade of professional electrical experience
+            </p>
+          </div>
+
+          <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+            <div
+              class="bg-primary bg-opacity-20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i
+                data-feather="dollar-sign"
+                class="text-primary dark:text-primary text-2xl"
+              ></i>
+            </div>
+            <h3
+              class="text-xl font-semibold mb-2 text-neutral-dark dark:text-accent"
+            >
+              Affordable
+            </h3>
+            <p class="text-neutral-dark dark:text-accent text-opacity-80">
+              Competitive pricing with no hidden costs
+            </p>
+          </div>
+
+          <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+            <div
+              class="bg-primary bg-opacity-20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i
+                data-feather="shield"
+                class="text-primary dark:text-primary text-2xl"
+              ></i>
+            </div>
+            <h3
+              class="text-xl font-semibold mb-2 text-neutral-dark dark:text-accent"
+            >
+              Reliable
+            </h3>
+            <p class="text-neutral-dark dark:text-accent text-opacity-80">
+              Consistent quality and timely project completion
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-20 bg-neutral-light dark:bg-neutral">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-4 text-neutral-dark dark:text-accent"
+          data-aos="fade-up"
+        >
+          Client Testimonials
+        </h2>
+        <p
+          class="text-center max-w-2xl mx-auto mb-12 text-neutral-dark dark:text-accent"
+          data-aos="fade-up"
+        >
+          What our clients say about our services
+        </p>
+
+        <div class="max-w-4xl mx-auto relative h-80 overflow-hidden">
+          <div class="testimonial-slide active" data-aos="fade-up">
+            <div class="bg-white dark:bg-neutral-dark rounded-xl p-8">
+              <div class="flex items-center mb-4">
+                <div class="flex text-primary dark:text-primary">
+                  <i data-feather="star" class="fill-current"></i>
+                  <i data-feather="star" class="fill-current"></i>
+                  <i data-feather="star" class="fill-current"></i>
+                  <i data-feather="star" class="fill-current"></i>
+                  <i data-feather="star" class="fill-current"></i>
+                </div>
+              </div>
+              <p class="italic mb-6 text-neutral-dark dark:text-accent">
+                "Engineer Brian installed our solar system and the results have
+                been phenomenal. Our electricity bills have reduced by 80% and
+                the installation was professional and efficient."
+              </p>
+              <div class="flex items-center">
+                <div class="h-12 w-12 bg-primary rounded-full mr-4"></div>
+                <div>
+                  <p class="font-semibold text-neutral-dark dark:text-accent">
+                    James Kariuki
+                  </p>
+                  <p class="text-neutral-dark dark:text-accent text-opacity-70">
+                    Homeowner, Nairobi
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-slide" data-aos="fade-up">
+            <div class="bg-white dark:bg-neutral-dark rounded-xl p-8">
+              <div class="flex items-center mb-4">
+                <div class="flex text-primary dark:text-primary">
+                  <i data-feather="star" class="fill-current"></i>
+                  <i data-feather="star" class="fill-current"></i>
+                  <i data-feather="star" class="fill-current"></i>
+                  <i data-feather="star" class="fill-current"></i>
+                  <i data-feather="star" class="fill-current"></i>
+                </div>
+              </div>
+              <p class="italic mb-6 text-neutral-dark dark:text-accent">
+                "We hired Engineer Brian for our office electrical wiring and
+                couldn't be happier. His attention to detail and professionalism
+                exceeded our expectations."
+              </p>
+              <div class="flex items-center">
+                <div class="h-12 w-12 bg-primary rounded-full mr-4"></div>
+                <div>
+                  <p class="font-semibold text-neutral-dark dark:text-accent">
+                    Sarah Mwende
+                  </p>
+                  <p class="text-neutral-dark dark:text-accent text-opacity-70">
+                    Business Owner, Mombasa
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-slide" data-aos="fade-up">
+            <div class="bg-white dark:bg-neutral-dark rounded-xl p-8">
+              <div class="flex items-center mb-4">
+                <div class="flex text-primary dark:text-primary">
+                  <i data-feather="star" class="fill-current"></i>
+                  <i data-feather="star" class="fill-current"></i>
+                  <i data-feather="star" class="fill-current"></i>
+                  <i data-feather="star" class="fill-current"></i>
+                  <i data-feather="star" class="fill-current"></i>
+                </div>
+              </div>
+              <p class="italic mb-6 text-neutral-dark dark:text-accent">
+                "The maintenance service provided by Engineer Brian has kept our
+                manufacturing plant running smoothly for years. His expertise is
+                unmatched."
+              </p>
+              <div class="flex items-center">
+                <div class="h-12 w-12 bg-primary rounded-full mr-4"></div>
+                <div>
+                  <p class="font-semibold text-neutral-dark dark:text-accent">
+                    David Ochieng
+                  </p>
+                  <p class="text-neutral-dark dark:text-accent text-opacity-70">
+                    Factory Manager, Kisumu
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-center mt-8 space-x-2">
+          <button
+            class="testimonial-dot w-3 h-3 rounded-full bg-primary dark:bg-primary opacity-50"
+            data-slide="0"
+          ></button>
+          <button
+            class="testimonial-dot w-3 h-3 rounded-full bg-primary dark:bg-primary opacity-50"
+            data-slide="1"
+          ></button>
+          <button
+            class="testimonial-dot w-3 h-3 rounded-full bg-primary dark:bg-primary opacity-50"
+            data-slide="2"
+          ></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white dark:bg-neutral-dark">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-4 text-neutral-dark dark:text-accent"
+          data-aos="fade-up"
+        >
+          Get In Touch
+        </h2>
+        <p
+          class="text-center max-w-2xl mx-auto mb-12 text-neutral-dark dark:text-accent"
+          data-aos="fade-up"
+        >
+          Reach out for a free consultation and quote
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-12">
+          <div data-aos="fade-right">
+            <form class="space-y-6" netlify>
+              <div>
+                <label
+                  for="name"
+                  class="block mb-2 text-neutral-dark dark:text-accent"
+                  >Full Name</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="w-full bg-neutral-light dark:bg-neutral border border-neutral-dark dark:border-accent border-opacity-20 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary text-neutral-dark dark:text-accent"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  for="email"
+                  class="block mb-2 text-neutral-dark dark:text-accent"
+                  >Email Address</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="w-full bg-neutral-light dark:bg-neutral border border-neutral-dark dark:border-accent border-opacity-20 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary text-neutral-dark dark:text-accent"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  for="phone"
+                  class="block mb-2 text-neutral-dark dark:text-accent"
+                  >Phone Number</label
+                >
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  class="w-full bg-neutral-light dark:bg-neutral border border-neutral-dark dark:border-accent border-opacity-20 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary text-neutral-dark dark:text-accent"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  for="message"
+                  class="block mb-2 text-neutral-dark dark:text-accent"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  class="w-full bg-neutral-light dark:bg-neutral border border-neutral-dark dark:border-accent border-opacity-20 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary text-neutral-dark dark:text-accent"
+                  required
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="w-full bg-primary dark:bg-primary text-neutral dark:text-neutral-dark py-3 rounded-lg font-semibold hover:bg-opacity-90 transition"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+
+          <div data-aos="fade-left">
+            <div class="bg-neutral-light dark:bg-neutral rounded-lg p-6 mb-6">
+              <h3
+                class="text-xl font-semibold mb-4 text-neutral-dark dark:text-accent"
+              >
+                Contact Information
+              </h3>
+              <div class="space-y-4">
+                <div class="flex items-center">
+                  <div class="bg-primary bg-opacity-20 p-2 rounded-full mr-4">
+                    <i
+                      data-feather="phone"
+                      class="text-primary dark:text-primary"
+                    ></i>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-neutral-dark dark:text-accent">
+                      Phone
+                    </p>
+                    <a
+                      href="tel:+254700000000"
+                      class="text-neutral-dark dark:text-accent text-opacity-80 hover:text-primary"
+                      >+254 700 000 000</a
+                    >
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <div class="bg-primary bg-opacity-20 p-2 rounded-full mr-4">
+                    <i
+                      data-feather="mail"
+                      class="text-primary dark:text-primary"
+                    ></i>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-neutral-dark dark:text-accent">
+                      Email
+                    </p>
+                    <a
+                      href="mailto:info@engineerbrian.com"
+                      class="text-neutral-dark dark:text-accent text-opacity-80 hover:text-primary"
+                      >info@engineerbrian.com</a
+                    >
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <div class="bg-primary bg-opacity-20 p-2 rounded-full mr-4">
+                    <i
+                      data-feather="map-pin"
+                      class="text-primary dark:text-primary"
+                    ></i>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-neutral-dark dark:text-accent">
+                      Location
+                    </p>
+                    <p
+                      class="text-neutral-dark dark:text-accent text-opacity-80"
+                    >
+                      Nairobi, Kenya
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-neutral-light dark:bg-neutral rounded-lg p-6">
+              <h3
+                class="text-xl font-semibold mb-4 text-neutral-dark dark:text-accent"
+              >
+                Business Hours
+              </h3>
+              <div class="space-y-2">
+                <div class="flex justify-between">
+                  <p class="text-neutral-dark dark:text-accent">
+                    Monday - Friday
+                  </p>
+                  <p class="text-primary dark:text-primary">
+                    8:00 AM - 6:00 PM
+                  </p>
+                </div>
+                <div class="flex justify-between">
+                  <p class="text-neutral-dark dark:text-accent">Saturday</p>
+                  <p class="text-primary dark:text-primary">
+                    9:00 AM - 4:00 PM
+                  </p>
+                </div>
+                <div class="flex justify-between">
+                  <p class="text-neutral-dark dark:text-accent">Sunday</p>
+                  <p class="text-primary dark:text-primary">Emergency Only</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-neutral dark:bg-neutral-dark py-12">
+      <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3
+              class="text-xl font-semibold mb-4 text-accent dark:text-accent-dark"
+            >
+              Engineer Brian
+            </h3>
+            <p class="text-accent dark:text-accent-dark text-opacity-80 mb-4">
+              Professional electrical and solar installation services across
+              Kenya.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="text-accent dark:text-accent-dark text-opacity-80 hover:text-primary"
+              >
+                <i data-feather="facebook"></i>
+              </a>
+              <a
+                href="#"
+                class="text-accent dark:text-accent-dark text-opacity-80 hover:text-primary"
+              >
+                <i data-feather="twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="text-accent dark:text-accent-dark text-opacity-80 hover:text-primary"
+              >
+                <i data-feather="instagram"></i>
+              </a>
+              <a
+                href="#"
+                class="text-accent dark:text-accent-dark text-opacity-80 hover:text-primary"
+              >
+                <i data-feather="linkedin"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3
+              class="text-xl font-semibold mb-4 text-accent dark:text-accent-dark"
+            >
+              Quick Links
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#home"
+                  class="text-accent dark:text-accent-dark text-opacity-80 hover:text-primary"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="text-accent dark:text-accent-dark text-opacity-80 hover:text-primary"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-accent dark:text-accent-dark text-opacity-80 hover:text-primary"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#portfolio"
+                  class="text-accent dark:text-accent-dark text-opacity-80 hover:text-primary"
+                  >Portfolio</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3
+              class="text-xl font-semibold mb-4 text-accent dark:text-accent-dark"
+            >
+              Services
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  class="text-accent dark:text-accent-dark text-opacity-80 hover:text-primary"
+                  >Electrical Installations</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-accent dark:text-accent-dark text-opacity-80 hover:text-primary"
+                  >Solar Panel Installations</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-accent dark:text-accent-dark text-opacity-80 hover:text-primary"
+                  >Maintenance & Repairs</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-accent dark:text-accent-dark text-opacity-80 hover:text-primary"
+                  >Energy Consulting</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3
+              class="text-xl font-semibold mb-4 text-accent dark:text-accent-dark"
+            >
+              Contact
+            </h3>
+            <ul class="space-y-2">
+              <li class="text-accent dark:text-accent-dark text-opacity-80">
+                Nairobi, Kenya
+              </li>
+              <li class="text-accent dark:text-accent-dark text-opacity-80">
+                +254 700 000 000
+              </li>
+              <li class="text-accent dark:text-accent-dark text-opacity-80">
+                info@engineerbrian.com
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-accent dark:border-accent-dark border-opacity-20 pt-8 text-center"
+        >
+          <p class="text-accent dark:text-accent-dark text-opacity-70">
+            © 2023 Engineer Brian. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a
+      href="https://wa.me/254700000000"
+      class="floating-whatsapp bg-[#25D366] text-white p-4 rounded-full shadow-lg"
+    >
+      <i data-feather="message-circle" class="w-6 h-6"></i>
+    </a>
+
+    <script src="script.js"></script>
+  </body>
+</html>
