@@ -176,86 +176,311 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="electric-bg min-h-screen flex items-center pt-20">
-      <div class="container mx-auto px-6 py-20">
-        <div class="max-w-3xl" data-aos="fade-right">
-          <h1
-            class="text-4xl md:text-6xl font-bold mb-6 text-neutral-dark dark:text-accent"
+    <section
+      id="home"
+      class="relative electric-bg min-h-screen flex items-center pt-20 overflow-hidden"
+    >
+      <!-- Animated decorative shapes -->
+      <div
+        class="absolute top-20 left-10 w-32 h-32 bg-secondary opacity-20 rounded-full animate-pulse"
+      ></div>
+      <div
+        class="absolute bottom-10 right-20 w-24 h-24 bg-primary opacity-30 rounded-full animate-bounce"
+      ></div>
+
+      <!-- Lightning Icon floating in background -->
+      <div
+        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-yellow-400 opacity-20"
+      >
+        <i data-feather="zap" class="w-40 h-40"></i>
+      </div>
+
+      <div class="container mx-auto px-6 py-20 text-center relative z-10">
+        <!-- Text Content -->
+        <h1
+          class="text-4xl md:text-6xl font-bold mb-6 text-neutral-dark dark:text-accent leading-tight"
+          data-aos="fade-up"
+        >
+          Powering Your World with
+          <span
+            id="dynamic-word"
+            class="text-primary dark:text-secondary transition-colors"
+            >Safe</span
           >
-            Powering Your World with Safe & Reliable Solutions
-          </h1>
-          <p class="text-xl mb-8 text-neutral-dark dark:text-accent">
-            Certified electrical and solar installation expert delivering
-            sustainable energy solutions for homes and businesses across Kenya.
-          </p>
-          <div class="flex flex-wrap gap-4">
-            <a
-              href="#contact"
-              class="bg-primary dark:bg-primary text-neutral dark:text-neutral-dark px-8 py-3 rounded-full font-semibold hover:bg-opacity-90 transition"
-              >Get a Quote</a
-            >
-            <a
-              href="https://wa.me/254700000000"
-              class="border-2 border-secondary dark:border-secondary text-secondary dark:text-secondary px-8 py-3 rounded-full font-semibold hover:bg-secondary hover:text-accent transition"
-              >Contact on WhatsApp</a
-            >
-          </div>
+          Solutions ⚡
+        </h1>
+        <p
+          class="text-lg md:text-xl mb-8 text-neutral-dark dark:text-accent max-w-2xl mx-auto"
+          data-aos="fade-up"
+          data-aos-delay="150"
+        >
+          Certified electrical & solar installation expert delivering
+          sustainable energy solutions for homes and businesses across Kenya.
+        </p>
+        <div
+          class="flex flex-wrap justify-center gap-4"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
+          <a
+            href="#contact"
+            class="bg-primary text-white dark:bg-primary px-8 py-3 rounded-full font-semibold hover:shadow-lg hover:scale-105 transform transition"
+            >Get a Quote</a
+          >
+          <a
+            href="https://wa.me/254700000000"
+            target="_blank"
+            class="border-2 border-secondary text-secondary dark:text-secondary px-8 py-3 rounded-full font-semibold hover:bg-secondary hover:text-white transition"
+          >
+            <i data-feather="message-circle" class="inline-block mr-2"></i>
+            WhatsApp Us
+          </a>
         </div>
       </div>
     </section>
 
+    <!-- Electric Animated Background -->
+    <style>
+      .electric-bg {
+        background: linear-gradient(135deg, #f0f9ff, #e0f2fe, #fef9c3, #fef2f2);
+        background-size: 400% 400%;
+        animation: electricMove 12s ease infinite;
+      }
+
+      .dark .electric-bg {
+        background: linear-gradient(135deg, #0f172a, #1e293b, #334155, #0f172a);
+        background-size: 400% 400%;
+        animation: electricMove 12s ease infinite;
+      }
+
+      @keyframes electricMove {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+    </style>
+
+    <!-- Cycling Text Script -->
+    <script>
+      const words = ["Safe", "Reliable", "Affordable", "Sustainable"];
+      let index = 0;
+      const dynamicWord = document.getElementById("dynamic-word");
+
+      setInterval(() => {
+        index = (index + 1) % words.length;
+        dynamicWord.textContent = words[index];
+      }, 2500);
+    </script>
+
     <!-- About Section -->
-    <section id="about" class="py-20 bg-neutral-light dark:bg-neutral">
+    <section
+      id="about"
+      class="py-20 bg-neutral-light dark:bg-neutral relative overflow-hidden"
+    >
       <div class="container mx-auto px-6">
         <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Left Content -->
           <div data-aos="fade-right">
             <h2
-              class="text-3xl md:text-4xl font-bold mb-6 text-neutral-dark dark:text-accent"
+              class="text-3xl md:text-4xl font-bold mb-4 text-neutral-dark dark:text-accent"
             >
-              About Engineer Brian
+              About <span class="text-primary">Engineer Brian</span>
             </h2>
-            <p class="mb-4 text-neutral-dark dark:text-accent">
-              With over 10 years of experience in electrical engineering and
-              renewable energy systems, I bring expertise, safety, and
-              innovation to every project.
+            <p
+              class="text-lg font-medium mb-6 text-primary dark:text-primary"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              Powering Homes, Businesses & Communities with Excellence ⚡
             </p>
-            <p class="mb-6 text-neutral-dark dark:text-accent">
-              Certified by the Energy Regulatory Commission (ERC) and dedicated
+
+            <p class="mb-4 text-neutral-dark dark:text-accent leading-relaxed">
+              With over <strong>10 years of experience</strong> in electrical
+              engineering and renewable energy systems, I bring expertise,
+              safety, and innovation to every project.
+            </p>
+            <p class="mb-6 text-neutral-dark dark:text-accent leading-relaxed">
+              Certified by the
+              <strong>Energy Regulatory Commission (ERC)</strong> and dedicated
               to sustainable practices, I deliver reliable energy solutions that
-              power homes, businesses, and institutions across Kenya.
+              empower homes, businesses, and institutions across Kenya.
             </p>
-            <div class="flex items-center space-x-4 mb-6">
-              <div class="bg-primary bg-opacity-20 p-3 rounded-full">
-                <i
-                  data-feather="award"
-                  class="text-primary dark:text-primary"
-                ></i>
+
+            <!-- Highlights -->
+            <div class="grid grid-cols-2 gap-6 mb-8">
+              <div class="flex items-center space-x-3">
+                <div class="bg-primary bg-opacity-20 p-3 rounded-full">
+                  <i
+                    data-feather="award"
+                    class="text-primary dark:text-primary"
+                  ></i>
+                </div>
+                <p class="text-neutral-dark dark:text-accent">
+                  ERC Certified Engineer
+                </p>
               </div>
-              <p class="text-neutral-dark dark:text-accent">
-                ERC Certified Electrical Engineer
-              </p>
+              <div class="flex items-center space-x-3">
+                <div class="bg-primary bg-opacity-20 p-3 rounded-full">
+                  <i
+                    data-feather="shield"
+                    class="text-primary dark:text-primary"
+                  ></i>
+                </div>
+                <p class="text-neutral-dark dark:text-accent">
+                  Fully Insured & Compliant
+                </p>
+              </div>
             </div>
-            <div class="flex items-center space-x-4">
-              <div class="bg-primary bg-opacity-20 p-3 rounded-full">
-                <i
-                  data-feather="shield"
-                  class="text-primary dark:text-primary"
-                ></i>
+
+            <!-- Quick Stats (with count-up and + suffix) -->
+            <div class="grid grid-cols-3 gap-6 text-center">
+              <div>
+                <h3
+                  class="text-3xl font-bold text-primary counter"
+                  data-target="10"
+                  data-suffix="+"
+                >
+                  0
+                </h3>
+                <p class="text-neutral-dark dark:text-accent text-sm">
+                  Years Experience
+                </p>
               </div>
-              <p class="text-neutral-dark dark:text-accent">
-                Fully Insured & Compliance Certified
-              </p>
+              <div>
+                <h3
+                  class="text-3xl font-bold text-primary counter"
+                  data-target="500"
+                  data-suffix="+"
+                >
+                  0
+                </h3>
+                <p class="text-neutral-dark dark:text-accent text-sm">
+                  Projects Done
+                </p>
+              </div>
+              <div>
+                <h3
+                  class="text-3xl font-bold text-primary counter"
+                  data-target="300"
+                  data-suffix="+"
+                >
+                  0
+                </h3>
+                <p class="text-neutral-dark dark:text-accent text-sm">
+                  Happy Clients
+                </p>
+              </div>
             </div>
           </div>
-          <div data-aos="fade-left" class="relative">
-            <div class="bg-primary h-80 w-80 rounded-full mx-auto"></div>
-            <div
-              class="absolute -bottom-4 -right-4 bg-secondary h-40 w-40 rounded-full"
-            ></div>
+
+          <!-- Right Image/Illustration -->
+          <div
+            data-aos="fade-left"
+            class="relative flex justify-center items-center"
+          >
+            <div class="relative">
+              <!-- Main Circle -->
+              <div
+                class="bg-primary h-80 w-80 rounded-full mx-auto shadow-2xl animate-pulse"
+              ></div>
+
+              <!-- Profile Image -->
+              <img
+                src="images/project.jpg"
+                alt="Engineer Brian"
+                class="absolute inset-0 h-full w-full object-cover rounded-full border-4 border-white dark:border-neutral-light shadow-lg"
+              />
+
+              <!-- Decorative Small Circle (with glowing zap) -->
+              <div
+                class="absolute -bottom-6 -right-6 bg-secondary h-24 w-24 rounded-full flex items-center justify-center shadow-lg z-20 animate-glow"
+              >
+                <i
+                  data-feather="zap"
+                  class="text-white w-10 h-10 drop-shadow-glow"
+                ></i>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- Background Shape -->
+      <div
+        class="absolute top-0 left-0 w-40 h-40 bg-primary opacity-10 rounded-full blur-3xl"
+      ></div>
+      <div
+        class="absolute bottom-0 right-0 w-56 h-56 bg-secondary opacity-10 rounded-full blur-3xl"
+      ></div>
     </section>
+
+    <!-- Count-up Animation Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const counters = document.querySelectorAll(".counter");
+        const speed = 200;
+
+        const animateCount = (counter) => {
+          const update = () => {
+            const target = +counter.getAttribute("data-target");
+            const suffix = counter.getAttribute("data-suffix") || "";
+            const count = +counter.innerText.replace(/\D/g, "");
+            const increment = Math.ceil(target / speed);
+
+            if (count < target) {
+              counter.innerText = count + increment + suffix;
+              setTimeout(update, 20);
+            } else {
+              counter.innerText = target + suffix;
+            }
+          };
+          update();
+        };
+
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                animateCount(entry.target);
+                obs.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.5 }
+        );
+
+        counters.forEach((counter) => observer.observe(counter));
+      });
+    </script>
+
+    <!-- Glow Effect Styles -->
+    <style>
+      @keyframes glow {
+        0% {
+          box-shadow: 0 0 10px #facc15, 0 0 20px #facc15, 0 0 30px #facc15;
+        }
+        50% {
+          box-shadow: 0 0 20px #facc15, 0 0 40px #facc15, 0 0 60px #facc15;
+        }
+        100% {
+          box-shadow: 0 0 10px #facc15, 0 0 20px #facc15, 0 0 30px #facc15;
+        }
+      }
+
+      .animate-glow {
+        animation: glow 2s infinite ease-in-out;
+      }
+
+      .drop-shadow-glow {
+        filter: drop-shadow(0 0 8px #facc15) drop-shadow(0 0 16px #facc15);
+      }
+    </style>
 
     <!-- Services Section -->
     <section id="services" class="py-20 bg-white dark:bg-neutral-dark">
@@ -434,24 +659,29 @@
           Why Choose Us
         </h2>
         <p
-          class="text-center max-w-2xl mx-auto mb-12 text-neutral-dark dark:text-accent"
+          class="text-center max-w-2xl mx-auto mb-16 text-lg text-neutral-dark dark:text-accent"
           data-aos="fade-up"
         >
           Excellence in every wire and panel we install
         </p>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+          <!-- Certified -->
+          <div
+            class="bg-neutral-light dark:bg-neutral p-8 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 text-center flex flex-col items-center"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
             <div
-              class="bg-primary bg-opacity-20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4"
+              class="bg-gradient-to-tr from-primary/30 to-primary/60 w-20 h-20 rounded-full flex items-center justify-center mb-6"
             >
               <i
                 data-feather="award"
-                class="text-primary dark:text-primary text-2xl"
+                class="text-primary dark:text-primary w-10 h-10"
               ></i>
             </div>
             <h3
-              class="text-xl font-semibold mb-2 text-neutral-dark dark:text-accent"
+              class="text-xl font-semibold mb-3 text-neutral-dark dark:text-accent"
             >
               Certified
             </h3>
@@ -460,17 +690,22 @@
             </p>
           </div>
 
-          <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+          <!-- Experienced -->
+          <div
+            class="bg-neutral-light dark:bg-neutral p-8 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 text-center flex flex-col items-center"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
             <div
-              class="bg-primary bg-opacity-20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4"
+              class="bg-gradient-to-tr from-primary/30 to-primary/60 w-20 h-20 rounded-full flex items-center justify-center mb-6"
             >
               <i
                 data-feather="clock"
-                class="text-primary dark:text-primary text-2xl"
+                class="text-primary dark:text-primary w-10 h-10"
               ></i>
             </div>
             <h3
-              class="text-xl font-semibold mb-2 text-neutral-dark dark:text-accent"
+              class="text-xl font-semibold mb-3 text-neutral-dark dark:text-accent"
             >
               Experienced
             </h3>
@@ -479,17 +714,22 @@
             </p>
           </div>
 
-          <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+          <!-- Affordable -->
+          <div
+            class="bg-neutral-light dark:bg-neutral p-8 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 text-center flex flex-col items-center"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
             <div
-              class="bg-primary bg-opacity-20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4"
+              class="bg-gradient-to-tr from-primary/30 to-primary/60 w-20 h-20 rounded-full flex items-center justify-center mb-6"
             >
               <i
                 data-feather="dollar-sign"
-                class="text-primary dark:text-primary text-2xl"
+                class="text-primary dark:text-primary w-10 h-10"
               ></i>
             </div>
             <h3
-              class="text-xl font-semibold mb-2 text-neutral-dark dark:text-accent"
+              class="text-xl font-semibold mb-3 text-neutral-dark dark:text-accent"
             >
               Affordable
             </h3>
@@ -498,17 +738,22 @@
             </p>
           </div>
 
-          <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+          <!-- Reliable -->
+          <div
+            class="bg-neutral-light dark:bg-neutral p-8 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 text-center flex flex-col items-center"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
             <div
-              class="bg-primary bg-opacity-20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4"
+              class="bg-gradient-to-tr from-primary/30 to-primary/60 w-20 h-20 rounded-full flex items-center justify-center mb-6"
             >
               <i
                 data-feather="shield"
-                class="text-primary dark:text-primary text-2xl"
+                class="text-primary dark:text-primary w-10 h-10"
               ></i>
             </div>
             <h3
-              class="text-xl font-semibold mb-2 text-neutral-dark dark:text-accent"
+              class="text-xl font-semibold mb-3 text-neutral-dark dark:text-accent"
             >
               Reliable
             </h3>
@@ -521,7 +766,10 @@
     </section>
 
     <!-- Testimonials -->
-    <section id="testimonials" class="py-20 bg-neutral-light dark:bg-neutral">
+    <section
+      id="testimonials"
+      class="py-20 bg-neutral-light dark:bg-neutral relative"
+    >
       <div class="container mx-auto px-6">
         <h2
           class="text-3xl md:text-4xl font-bold text-center mb-4 text-neutral-dark dark:text-accent"
@@ -536,9 +784,13 @@
           What our clients say about our services
         </p>
 
+        <!-- Slider wrapper -->
         <div class="max-w-4xl mx-auto relative h-80 overflow-hidden">
-          <div class="testimonial-slide active" data-aos="fade-up">
-            <div class="bg-white dark:bg-neutral-dark rounded-xl p-8">
+          <!-- Testimonial 1 -->
+          <div
+            class="testimonial-slide active absolute inset-0 opacity-100 translate-x-0 transition-all duration-700 ease-in-out"
+          >
+            <div class="bg-white dark:bg-neutral-dark rounded-xl p-8 shadow-lg">
               <div class="flex items-center mb-4">
                 <div class="flex text-primary dark:text-primary">
                   <i data-feather="star" class="fill-current"></i>
@@ -567,8 +819,11 @@
             </div>
           </div>
 
-          <div class="testimonial-slide" data-aos="fade-up">
-            <div class="bg-white dark:bg-neutral-dark rounded-xl p-8">
+          <!-- Testimonial 2 -->
+          <div
+            class="testimonial-slide absolute inset-0 opacity-0 translate-x-10 transition-all duration-700 ease-in-out"
+          >
+            <div class="bg-white dark:bg-neutral-dark rounded-xl p-8 shadow-lg">
               <div class="flex items-center mb-4">
                 <div class="flex text-primary dark:text-primary">
                   <i data-feather="star" class="fill-current"></i>
@@ -597,8 +852,11 @@
             </div>
           </div>
 
-          <div class="testimonial-slide" data-aos="fade-up">
-            <div class="bg-white dark:bg-neutral-dark rounded-xl p-8">
+          <!-- Testimonial 3 -->
+          <div
+            class="testimonial-slide absolute inset-0 opacity-0 translate-x-10 transition-all duration-700 ease-in-out"
+          >
+            <div class="bg-white dark:bg-neutral-dark rounded-xl p-8 shadow-lg">
               <div class="flex items-center mb-4">
                 <div class="flex text-primary dark:text-primary">
                   <i data-feather="star" class="fill-current"></i>
@@ -628,17 +886,18 @@
           </div>
         </div>
 
-        <div class="flex justify-center mt-8 space-x-2">
+        <!-- Navigation dots -->
+        <div class="flex justify-center mt-8 space-x-3">
           <button
-            class="testimonial-dot w-3 h-3 rounded-full bg-primary dark:bg-primary opacity-50"
+            class="testimonial-dot w-3 h-3 rounded-full bg-primary dark:bg-primary opacity-50 transition duration-300"
             data-slide="0"
           ></button>
           <button
-            class="testimonial-dot w-3 h-3 rounded-full bg-primary dark:bg-primary opacity-50"
+            class="testimonial-dot w-3 h-3 rounded-full bg-primary dark:bg-primary opacity-50 transition duration-300"
             data-slide="1"
           ></button>
           <button
-            class="testimonial-dot w-3 h-3 rounded-full bg-primary dark:bg-primary opacity-50"
+            class="testimonial-dot w-3 h-3 rounded-full bg-primary dark:bg-primary opacity-50 transition duration-300"
             data-slide="2"
           ></button>
         </div>
@@ -735,19 +994,26 @@
             feather.replace();
           </script>
 
-          <div data-aos="fade-left">
-            <div class="bg-neutral-light dark:bg-neutral rounded-lg p-6 mb-6">
+          <div data-aos="fade-left" class="space-y-6">
+            <!-- Contact Info -->
+            <div
+              class="bg-neutral-light dark:bg-neutral rounded-xl p-6 shadow-lg hover:shadow-xl transition-transform transform hover:-translate-y-1"
+            >
               <h3
-                class="text-xl font-semibold mb-4 text-neutral-dark dark:text-accent"
+                class="text-2xl font-bold mb-6 text-neutral-dark dark:text-accent border-b border-neutral/20 pb-3"
               >
                 Contact Information
               </h3>
-              <div class="space-y-4">
-                <div class="flex items-center">
-                  <div class="bg-primary bg-opacity-20 p-2 rounded-full mr-4">
+
+              <div class="space-y-6">
+                <!-- Phone -->
+                <div class="flex items-center group">
+                  <div
+                    class="bg-gradient-to-tr from-primary/30 to-primary/50 p-3 rounded-full mr-4"
+                  >
                     <i
                       data-feather="phone"
-                      class="text-primary dark:text-primary"
+                      class="text-primary dark:text-primary w-6 h-6"
                     ></i>
                   </div>
                   <div>
@@ -755,17 +1021,22 @@
                       Phone
                     </p>
                     <a
-                      href="tel:+254700000000"
-                      class="text-neutral-dark dark:text-accent text-opacity-80 hover:text-primary"
-                      >+254 794 591 545</a
+                      href="tel:+254794591545"
+                      class="text-neutral-dark dark:text-accent text-opacity-80 group-hover:text-primary transition"
                     >
+                      +254 794 591 545
+                    </a>
                   </div>
                 </div>
-                <div class="flex items-center">
-                  <div class="bg-primary bg-opacity-20 p-2 rounded-full mr-4">
+
+                <!-- Email -->
+                <div class="flex items-center group">
+                  <div
+                    class="bg-gradient-to-tr from-primary/30 to-primary/50 p-3 rounded-full mr-4"
+                  >
                     <i
                       data-feather="mail"
-                      class="text-primary dark:text-primary"
+                      class="text-primary dark:text-primary w-6 h-6"
                     ></i>
                   </div>
                   <div>
@@ -774,16 +1045,21 @@
                     </p>
                     <a
                       href="mailto:info@engineerbrian.com"
-                      class="text-neutral-dark dark:text-accent text-opacity-80 hover:text-primary"
-                      >info@engineerbrian.com</a
+                      class="text-neutral-dark dark:text-accent text-opacity-80 group-hover:text-primary transition"
                     >
+                      info@engineerbrian.com
+                    </a>
                   </div>
                 </div>
-                <div class="flex items-center">
-                  <div class="bg-primary bg-opacity-20 p-2 rounded-full mr-4">
+
+                <!-- Location -->
+                <div class="flex items-center group">
+                  <div
+                    class="bg-gradient-to-tr from-primary/30 to-primary/50 p-3 rounded-full mr-4"
+                  >
                     <i
                       data-feather="map-pin"
-                      class="text-primary dark:text-primary"
+                      class="text-primary dark:text-primary w-6 h-6"
                     ></i>
                   </div>
                   <div>
@@ -791,7 +1067,7 @@
                       Location
                     </p>
                     <p
-                      class="text-neutral-dark dark:text-accent text-opacity-80"
+                      class="text-neutral-dark dark:text-accent text-opacity-80 group-hover:text-primary transition"
                     >
                       Kisumu, Kenya
                     </p>
@@ -800,30 +1076,36 @@
               </div>
             </div>
 
-            <div class="bg-neutral-light dark:bg-neutral rounded-lg p-6">
+            <!-- Business Hours -->
+            <div
+              class="bg-neutral-light dark:bg-neutral rounded-xl p-6 shadow-lg hover:shadow-xl transition-transform transform hover:-translate-y-1"
+            >
               <h3
-                class="text-xl font-semibold mb-4 text-neutral-dark dark:text-accent"
+                class="text-2xl font-bold mb-6 text-neutral-dark dark:text-accent border-b border-neutral/20 pb-3"
               >
                 Business Hours
               </h3>
-              <div class="space-y-2">
-                <div class="flex justify-between">
+
+              <div class="divide-y divide-neutral/20">
+                <div class="flex justify-between py-2">
                   <p class="text-neutral-dark dark:text-accent">
                     Monday - Friday
                   </p>
-                  <p class="text-primary dark:text-primary">
+                  <p class="text-primary dark:text-primary font-medium">
                     8:00 AM - 6:00 PM
                   </p>
                 </div>
-                <div class="flex justify-between">
+                <div class="flex justify-between py-2">
                   <p class="text-neutral-dark dark:text-accent">Saturday</p>
-                  <p class="text-primary dark:text-primary">
+                  <p class="text-primary dark:text-primary font-medium">
                     9:00 AM - 4:00 PM
                   </p>
                 </div>
-                <div class="flex justify-between">
+                <div class="flex justify-between py-2">
                   <p class="text-neutral-dark dark:text-accent">Sunday</p>
-                  <p class="text-primary dark:text-primary">Emergency Only</p>
+                  <p class="text-primary dark:text-primary font-medium">
+                    Emergency Only
+                  </p>
                 </div>
               </div>
             </div>

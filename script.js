@@ -94,54 +94,74 @@
         });
 
       // Testimonial slider
-      const testimonials = document.querySelectorAll(".testimonial-slide");
-      const dots = document.querySelectorAll(".testimonial-dot");
-      let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll(".testimonial-slide");
+        const dots = document.querySelectorAll(".testimonial-dot");
+        let currentTestimonial = 0;
+        let testimonialInterval;
 
-      function showTestimonial(n) {
-        testimonials.forEach((testimonial) =>
-          testimonial.classList.remove("active")
-        );
+        // Show testimonial function
+        function showTestimonial(n) {
+        testimonials.forEach((testimonial, i) => {
+            testimonial.classList.remove("active", "opacity-100", "translate-x-0");
+            testimonial.classList.add("opacity-0", "translate-x-10");
+
+            if (i === n) {
+            testimonial.classList.add("active", "opacity-100", "translate-x-0");
+            testimonial.classList.remove("opacity-0", "translate-x-10");
+            }
+        });
+
         dots.forEach((dot) => dot.classList.remove("bg-opacity-100"));
+        dots[n].classList.add("bg-opacity-100");
 
-        currentTestimonial = (n + testimonials.length) % testimonials.length;
+        currentTestimonial = n;
+        }
 
-        testimonials[currentTestimonial].classList.add("active");
-        dots[currentTestimonial].classList.add("bg-opacity-100");
-      }
+        // Manual dot navigation
+        dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+            showTestimonial(index);
+            resetInterval();
+        });
+        });
 
-      dots.forEach((dot, index) => {
-        dot.addEventListener("click", () => showTestimonial(index));
-      });
+        // Auto rotate testimonials
+        function startInterval() {
+        testimonialInterval = setInterval(() => {
+            showTestimonial((currentTestimonial + 1) % testimonials.length);
+        }, 5000);
+        }
 
-      // Auto rotate testimonials
-      setInterval(() => {
-        showTestimonial(currentTestimonial + 1);
-      }, 5000);
+        function resetInterval() {
+        clearInterval(testimonialInterval);
+        startInterval();
+        }
 
-      // Initialize dots opacity
-      dots[0].classList.add("bg-opacity-100");
+        // Initialize first testimonial
+        showTestimonial(0);
+        startInterval();
 
-      // Smooth scrolling for navigation links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
-          e.preventDefault();
+            e.preventDefault();
 
-          const targetId = this.getAttribute("href");
-          if (targetId === "#") return;
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
 
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
             window.scrollTo({
-              top: targetElement.offsetTop - 80,
-              behavior: "smooth",
+                top: targetElement.offsetTop - 80,
+                behavior: "smooth",
             });
 
             // Close mobile menu if open
-            document.getElementById("mobileMenu").classList.add("hidden");
-          }
+            const mobileMenu = document.getElementById("mobileMenu");
+            if (mobileMenu) mobileMenu.classList.add("hidden");
+            }
         });
-      });
+        });
 
       // Portfolio data - using your project images
       const portfolioItems = [];
@@ -165,7 +185,7 @@
         carouselNav.innerHTML = "";
 
         // Add first 3 items to carousel
-        const carouselItems = portfolioItems.slice(0, 3);
+        const carouselItems = portfolioItems.slice(0, 10);
 
         carouselItems.forEach((item, index) => {
           // Create slide
