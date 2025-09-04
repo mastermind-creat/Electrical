@@ -53,298 +53,7 @@
         },
       };
     </script>
-    <style>
-      body {
-        font-family: "Inter", sans-serif;
-        background-color: #1c1c1c;
-        color: #ffffff;
-        transition: background-color 0.3s, color 0.3s;
-      }
-      body.light {
-        background-color: #ffffff;
-        color: #1c1c1c;
-      }
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        font-family: "Poppins", sans-serif;
-      }
-      .electric-bg {
-        background: radial-gradient(
-          circle,
-          rgba(255, 215, 0, 0.1) 0%,
-          rgba(30, 144, 255, 0.05) 50%,
-          rgba(28, 28, 28, 1) 100%
-        );
-        position: relative;
-        overflow: hidden;
-      }
-      .light .electric-bg {
-        background: radial-gradient(
-          circle,
-          rgba(255, 215, 0, 0.05) 0%,
-          rgba(30, 144, 255, 0.03) 50%,
-          rgba(245, 245, 245, 1) 100%
-        );
-      }
-      .electric-bg::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: radial-gradient(
-            circle at 20% 30%,
-            rgba(255, 215, 0, 0.15) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 80% 70%,
-            rgba(30, 144, 255, 0.15) 0%,
-            transparent 50%
-          );
-        animation: pulse 4s ease-in-out infinite;
-        pointer-events: none;
-      }
-      .light .electric-bg::before {
-        background: radial-gradient(
-            circle at 20% 30%,
-            rgba(255, 215, 0, 0.1) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 80% 70%,
-            rgba(30, 144, 255, 0.1) 0%,
-            transparent 50%
-          );
-      }
-      @keyframes pulse {
-        0%,
-        100% {
-          opacity: 0.5;
-        }
-        50% {
-          opacity: 0.8;
-        }
-      }
-      .service-card {
-        transition: all 0.3s ease;
-      }
-      .service-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px -5px rgba(255, 215, 0, 0.3);
-      }
-      .light .service-card:hover {
-        box-shadow: 0 10px 25px -5px rgba(255, 215, 0, 0.2);
-      }
-      .testimonial-slide {
-        opacity: 0;
-        transition: opacity 0.5s ease;
-        position: absolute;
-        width: 100%;
-      }
-      .testimonial-slide.active {
-        opacity: 1;
-        position: relative;
-      }
-      .floating-whatsapp {
-        position: fixed;
-        bottom: 25px;
-        right: 25px;
-        z-index: 100;
-        animation: float 3s ease-in-out infinite;
-      }
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-      }
-      .theme-toggle {
-        transition: all 0.3s ease;
-      }
-      .carousel-container {
-        position: relative;
-        overflow: hidden;
-        border-radius: 0.5rem;
-      }
-      .carousel-track {
-        display: flex;
-        transition: transform 0.5s ease;
-      }
-      .carousel-slide {
-        min-width: 100%;
-        position: relative;
-      }
-      .carousel-nav {
-        position: absolute;
-        bottom: 1rem;
-        left: 0;
-        right: 0;
-        display: flex;
-        justify-content: center;
-        gap: 0.5rem;
-        z-index: 10;
-      }
-      .carousel-dot {
-        width: 0.75rem;
-        height: 0.75rem;
-        border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0.5);
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-      .carousel-dot.active {
-        background-color: #ffd700;
-      }
-      .carousel-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: rgba(0, 0, 0, 0.5);
-        color: white;
-        border: none;
-        width: 2.5rem;
-        height: 2.5rem;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        z-index: 10;
-        transition: background-color 0.3s;
-      }
-      .carousel-btn:hover {
-        background-color: rgba(0, 0, 0, 0.7);
-      }
-      .carousel-btn.prev {
-        left: 1rem;
-      }
-      .carousel-btn.next {
-        right: 1rem;
-      }
-      .light .carousel-dot {
-        background-color: rgba(0, 0, 0, 0.2);
-      }
-      .light .carousel-dot.active {
-        background-color: #ffd700;
-      }
-      .light .carousel-btn {
-        background-color: rgba(255, 255, 255, 0.7);
-        color: #1c1c1c;
-      }
-      .light .carousel-btn:hover {
-        background-color: rgba(255, 255, 255, 0.9);
-      }
-      .portfolio-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 1.5rem;
-      }
-      .portfolio-item {
-        border-radius: 0.5rem;
-        overflow: hidden;
-        position: relative;
-        height: 250px;
-        cursor: pointer;
-      }
-      .portfolio-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s;
-      }
-      .portfolio-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          to top,
-          rgba(0, 0, 0, 0.8) 0%,
-          transparent 100%
-        );
-        display: flex;
-        align-items: flex-end;
-        padding: 1.5rem;
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-      .portfolio-item:hover .portfolio-overlay {
-        opacity: 1;
-      }
-      .portfolio-item:hover .portfolio-image {
-        transform: scale(1.05);
-      }
-      .light .portfolio-overlay {
-        background: linear-gradient(
-          to top,
-          rgba(255, 255, 255, 0.9) 0%,
-          transparent 100%
-        );
-      }
-      /* Image Modal */
-      .image-modal {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1000;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s;
-      }
-      .image-modal.active {
-        opacity: 1;
-        pointer-events: auto;
-      }
-      .modal-content {
-        position: relative;
-        max-width: 90%;
-        max-height: 90%;
-      }
-      .modal-image {
-        max-width: 100%;
-        max-height: 80vh;
-        object-fit: contain;
-        border-radius: 0.5rem;
-      }
-      .modal-close {
-        position: absolute;
-        top: -40px;
-        right: 0;
-        background: none;
-        border: none;
-        color: white;
-        font-size: 2rem;
-        cursor: pointer;
-      }
-      .light .image-modal {
-        background-color: rgba(255, 255, 255, 0.95);
-      }
-      .light .modal-close {
-        color: #1c1c1c;
-      }
-      .modal-title {
-        color: white;
-        text-align: center;
-        margin-top: 1rem;
-        font-weight: 600;
-      }
-      .light .modal-title {
-        color: #1c1c1c;
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="dark">
     <!-- Navigation -->
@@ -953,72 +662,78 @@
         </p>
 
         <div class="grid md:grid-cols-2 gap-12">
-          <div data-aos="fade-right">
-            <form class="space-y-6" netlify>
-              <div>
-                <label
-                  for="name"
-                  class="block mb-2 text-neutral-dark dark:text-accent"
-                  >Full Name</label
+          <div data-aos="fade-right" class="max-w-3xl mx-auto">
+            <div
+              class="flex items-start space-x-6 bg-white dark:bg-neutral rounded-2xl shadow-lg p-6 hover:shadow-xl transition"
+            >
+              <!-- Profile Picture -->
+              <div class="relative">
+                <div
+                  class="p-1 rounded-full bg-gradient-to-tr from-primary to-secondary"
                 >
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  class="w-full bg-neutral-light dark:bg-neutral border border-neutral-dark dark:border-accent border-opacity-20 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary text-neutral-dark dark:text-accent"
-                  required
-                />
+                  <img
+                    src="images/project.jpg"
+                    alt="Profile Picture"
+                    class="w-28 h-28 rounded-full object-cover border-4 border-white dark:border-neutral"
+                  />
+                </div>
+                <span
+                  class="absolute bottom-2 right-2 w-4 h-4 bg-green-500 border-2 border-white dark:border-neutral rounded-full"
+                ></span>
               </div>
-              <div>
-                <label
-                  for="email"
-                  class="block mb-2 text-neutral-dark dark:text-accent"
-                  >Email Address</label
+
+              <!-- Message Form -->
+              <div class="flex-1 space-y-5">
+                <div>
+                  <h3
+                    class="text-xl font-semibold text-neutral-dark dark:text-accent mb-2"
+                  >
+                    Send a Direct Message
+                  </h3>
+                  <p
+                    class="text-sm text-neutral-dark/70 dark:text-accent/70 mb-3"
+                  >
+                    Your message will open directly in WhatsApp chat with
+                    Engineer Brian.
+                  </p>
+                  <textarea
+                    id="message"
+                    rows="5"
+                    class="w-full bg-neutral-light dark:bg-neutral border border-neutral-dark/20 dark:border-accent/20 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary text-neutral-dark dark:text-accent resize-none transition"
+                    placeholder="Type your message here..."
+                    required
+                  ></textarea>
+                </div>
+
+                <!-- Button -->
+                <button
+                  onclick="sendWhatsApp()"
+                  class="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-secondary text-neutral font-semibold py-3 rounded-xl shadow-md hover:shadow-lg hover:opacity-95 transition"
                 >
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  class="w-full bg-neutral-light dark:bg-neutral border border-neutral-dark dark:border-accent border-opacity-20 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary text-neutral-dark dark:text-accent"
-                  required
-                />
+                  <i data-feather="send"></i> Send via WhatsApp
+                </button>
               </div>
-              <div>
-                <label
-                  for="phone"
-                  class="block mb-2 text-neutral-dark dark:text-accent"
-                  >Phone Number</label
-                >
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  class="w-full bg-neutral-light dark:bg-neutral border border-neutral-dark dark:border-accent border-opacity-20 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary text-neutral-dark dark:text-accent"
-                  required
-                />
-              </div>
-              <div>
-                <label
-                  for="message"
-                  class="block mb-2 text-neutral-dark dark:text-accent"
-                  >Message</label
-                >
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  class="w-full bg-neutral-light dark:bg-neutral border border-neutral-dark dark:border-accent border-opacity-20 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary text-neutral-dark dark:text-accent"
-                  required
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                class="w-full bg-primary dark:bg-primary text-neutral dark:text-neutral-dark py-3 rounded-lg font-semibold hover:bg-opacity-90 transition"
-              >
-                Send Message
-              </button>
-            </form>
+            </div>
           </div>
+
+          <script>
+            function sendWhatsApp() {
+              const message = document.getElementById("message").value.trim();
+              if (!message) {
+                alert("Please enter a message");
+                return;
+              }
+              const url =
+                "https://wa.me/254794591545?text=" +
+                encodeURIComponent(message);
+              window.open(url, "_blank");
+            }
+          </script>
+
+          <script>
+            // Feather icons refresh
+            feather.replace();
+          </script>
 
           <div data-aos="fade-left">
             <div class="bg-neutral-light dark:bg-neutral rounded-lg p-6 mb-6">
@@ -1042,7 +757,7 @@
                     <a
                       href="tel:+254700000000"
                       class="text-neutral-dark dark:text-accent text-opacity-80 hover:text-primary"
-                      >+254 700 000 000</a
+                      >+254 794 591 545</a
                     >
                   </div>
                 </div>
@@ -1078,7 +793,7 @@
                     <p
                       class="text-neutral-dark dark:text-accent text-opacity-80"
                     >
-                      Nairobi, Kenya
+                      Kisumu, Kenya
                     </p>
                   </div>
                 </div>
@@ -1246,7 +961,7 @@
                 Nairobi, Kenya
               </li>
               <li class="text-accent dark:text-accent-dark text-opacity-80">
-                +254 700 000 000
+                +254 794 591 545
               </li>
               <li class="text-accent dark:text-accent-dark text-opacity-80">
                 info@engineerbrian.com
@@ -1256,10 +971,17 @@
         </div>
 
         <div
-          class="border-t border-accent dark:border-accent-dark border-opacity-20 pt-8 text-center"
+          class="mt-12 pt-8 border-t border-white/5 text-center text-white/60 text-sm"
         >
-          <p class="text-accent dark:text-accent-dark text-opacity-70">
-            © 2023 Engineer Brian. All rights reserved.
+          <p>© <span id="year"></span> Engineer Brian. All rights reserved.</p>
+          <p class="mt-2">
+            Powered by
+            <a
+              href="https://lates-portfolio-v1.vercel.app/"
+              target="_blank"
+              class="text-primary hover:underline"
+              >Mastermind</a
+            >
           </p>
         </div>
       </div>
@@ -1267,329 +989,12 @@
 
     <!-- Floating WhatsApp Button -->
     <a
-      href="https://wa.me/254700000000"
+      href="https://wa.me/254794591545"
       class="floating-whatsapp bg-[#25D366] text-white p-4 rounded-full shadow-lg"
     >
       <i data-feather="message-circle" class="w-6 h-6"></i>
     </a>
 
-    <script>
-      // Initialize animations
-      AOS.init({
-        duration: 1000,
-        once: true,
-        offset: 100,
-      });
-
-      // Initialize feather icons
-      feather.replace();
-
-      // Mobile menu toggle
-      document
-        .getElementById("mobileMenuButton")
-        .addEventListener("click", function () {
-          const menu = document.getElementById("mobileMenu");
-          menu.classList.toggle("hidden");
-        });
-
-      // Theme functionality
-      const themeDropdownButton = document.getElementById(
-        "themeDropdownButton"
-      );
-      const themeDropdown = document.getElementById("themeDropdown");
-      const body = document.body;
-
-      // Theme toggle functionality
-      themeDropdownButton.addEventListener("click", function () {
-        themeDropdown.classList.toggle("hidden");
-      });
-
-      // Close dropdown when clicking outside
-      document.addEventListener("click", function (event) {
-        if (
-          !themeDropdownButton.contains(event.target) &&
-          !themeDropdown.contains(event.target)
-        ) {
-          themeDropdown.classList.add("hidden");
-        }
-      });
-
-      // Set theme function
-      function setTheme(theme) {
-        if (theme === "system") {
-          // Check system preference
-          if (window.matchMedia("(prefers-color-scheme: light)").matches) {
-            body.classList.remove("dark");
-            body.classList.add("light");
-          } else {
-            body.classList.remove("light");
-            body.classList.add("dark");
-          }
-          localStorage.setItem("theme", "system");
-        } else {
-          body.classList.remove("light", "dark");
-          body.classList.add(theme);
-          localStorage.setItem("theme", theme);
-        }
-
-        // Update icons and close dropdown
-        themeDropdown.classList.add("hidden");
-        feather.replace();
-      }
-
-      // Theme selection handlers
-      document.querySelectorAll("[data-theme]").forEach((button) => {
-        button.addEventListener("click", function () {
-          setTheme(this.getAttribute("data-theme"));
-        });
-      });
-
-      // Check for saved theme preference or respect OS preference
-      const savedTheme = localStorage.getItem("theme");
-      if (savedTheme) {
-        setTheme(savedTheme);
-      } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
-        setTheme("light");
-      } else {
-        setTheme("dark");
-      }
-
-      // Listen for system theme changes
-      window
-        .matchMedia("(prefers-color-scheme: light)")
-        .addEventListener("change", (e) => {
-          if (localStorage.getItem("theme") === "system") {
-            if (e.matches) {
-              body.classList.remove("dark");
-              body.classList.add("light");
-            } else {
-              body.classList.remove("light");
-              body.classList.add("dark");
-            }
-          }
-        });
-
-      // Testimonial slider
-      const testimonials = document.querySelectorAll(".testimonial-slide");
-      const dots = document.querySelectorAll(".testimonial-dot");
-      let currentTestimonial = 0;
-
-      function showTestimonial(n) {
-        testimonials.forEach((testimonial) =>
-          testimonial.classList.remove("active")
-        );
-        dots.forEach((dot) => dot.classList.remove("bg-opacity-100"));
-
-        currentTestimonial = (n + testimonials.length) % testimonials.length;
-
-        testimonials[currentTestimonial].classList.add("active");
-        dots[currentTestimonial].classList.add("bg-opacity-100");
-      }
-
-      dots.forEach((dot, index) => {
-        dot.addEventListener("click", () => showTestimonial(index));
-      });
-
-      // Auto rotate testimonials
-      setInterval(() => {
-        showTestimonial(currentTestimonial + 1);
-      }, 5000);
-
-      // Initialize dots opacity
-      dots[0].classList.add("bg-opacity-100");
-
-      // Smooth scrolling for navigation links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-
-          const targetId = this.getAttribute("href");
-          if (targetId === "#") return;
-
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 80,
-              behavior: "smooth",
-            });
-
-            // Close mobile menu if open
-            document.getElementById("mobileMenu").classList.add("hidden");
-          }
-        });
-      });
-
-      // Portfolio data - using your project images
-      const portfolioItems = [];
-      for (let i = 1; i <= 24; i++) {
-        portfolioItems.push({
-          id: i,
-          title: `Project ${i}`,
-          category:
-            i % 3 === 0 ? "solar" : i % 3 === 1 ? "electrical" : "maintenance",
-          image: `images/project${i}.jpg`,
-        });
-      }
-
-      // Initialize carousel
-      function initCarousel() {
-        const carouselTrack = document.querySelector(".carousel-track");
-        const carouselNav = document.querySelector(".carousel-nav");
-
-        // Clear existing content
-        carouselTrack.innerHTML = "";
-        carouselNav.innerHTML = "";
-
-        // Add first 3 items to carousel
-        const carouselItems = portfolioItems.slice(0, 3);
-
-        carouselItems.forEach((item, index) => {
-          // Create slide
-          const slide = document.createElement("div");
-          slide.className = "carousel-slide";
-          slide.innerHTML = `
-                    <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-6">
-                        <h3 class="text-xl font-bold text-white">${item.title}</h3>
-                    </div>
-                `;
-          carouselTrack.appendChild(slide);
-
-          // Create dot
-          const dot = document.createElement("div");
-          dot.className = `carousel-dot ${index === 0 ? "active" : ""}`;
-          dot.dataset.index = index;
-          dot.addEventListener("click", () => showSlide(index));
-          carouselNav.appendChild(dot);
-        });
-
-        // Set up carousel navigation
-        let currentSlide = 0;
-
-        function showSlide(index) {
-          currentSlide = index;
-          carouselTrack.style.transform = `translateX(-${index * 100}%)`;
-
-          // Update active dot
-          document.querySelectorAll(".carousel-dot").forEach((dot, i) => {
-            if (i === index) {
-              dot.classList.add("active");
-            } else {
-              dot.classList.remove("active");
-            }
-          });
-        }
-
-        // Previous button
-        document
-          .querySelector(".carousel-btn.prev")
-          .addEventListener("click", () => {
-            let newIndex = currentSlide - 1;
-            if (newIndex < 0) newIndex = carouselItems.length - 1;
-            showSlide(newIndex);
-          });
-
-        // Next button
-        document
-          .querySelector(".carousel-btn.next")
-          .addEventListener("click", () => {
-            let newIndex = currentSlide + 1;
-            if (newIndex >= carouselItems.length) newIndex = 0;
-            showSlide(newIndex);
-          });
-
-        // Auto slide
-        setInterval(() => {
-          let newIndex = currentSlide + 1;
-          if (newIndex >= carouselItems.length) newIndex = 0;
-          showSlide(newIndex);
-        }, 5000);
-      }
-
-      // Initialize portfolio grid
-      function initPortfolioGrid(limit = 6) {
-        const portfolioGrid = document.querySelector(".portfolio-grid");
-        portfolioGrid.innerHTML = "";
-
-        const itemsToShow = portfolioItems.slice(0, limit);
-
-        itemsToShow.forEach((item) => {
-          const portfolioItem = document.createElement("div");
-          portfolioItem.className = "portfolio-item";
-          portfolioItem.innerHTML = `
-                    <img src="${item.image}" alt="${item.title}" class="portfolio-image">
-                    <div class="portfolio-overlay">
-                        <h3 class="text-lg font-bold text-white dark:text-neutral-dark">${item.title}</h3>
-                    </div>
-                `;
-
-          // Add click event to open modal
-          portfolioItem.addEventListener("click", () => {
-            openModal(item.image, item.title);
-          });
-
-          portfolioGrid.appendChild(portfolioItem);
-        });
-      }
-
-      // View more functionality
-      let showingAll = false;
-      const viewMoreBtn = document.getElementById("viewMoreBtn");
-
-      viewMoreBtn.addEventListener("click", () => {
-        if (showingAll) {
-          initPortfolioGrid(6);
-          viewMoreBtn.textContent = "View More Projects";
-          showingAll = false;
-        } else {
-          initPortfolioGrid(portfolioItems.length);
-          viewMoreBtn.textContent = "View Less Projects";
-          showingAll = true;
-        }
-      });
-
-      // Image Modal functionality
-      const imageModal = document.getElementById("imageModal");
-      const modalImage = document.getElementById("modalImage");
-      const modalTitle = document.getElementById("modalTitle");
-      const modalClose = document.getElementById("modalClose");
-
-      function openModal(imageSrc, title) {
-        modalImage.src = imageSrc;
-        modalTitle.textContent = title;
-        imageModal.classList.add("active");
-        document.body.style.overflow = "hidden"; // Prevent scrolling when modal is open
-      }
-
-      function closeModal() {
-        imageModal.classList.remove("active");
-        document.body.style.overflow = ""; // Re-enable scrolling
-      }
-
-      modalClose.addEventListener("click", closeModal);
-
-      // Close modal when clicking outside the image
-      imageModal.addEventListener("click", (e) => {
-        if (e.target === imageModal) {
-          closeModal();
-        }
-      });
-
-      // Close modal with Escape key
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && imageModal.classList.contains("active")) {
-          closeModal();
-        }
-      });
-
-      // Initialize everything when DOM is loaded
-      document.addEventListener("DOMContentLoaded", function () {
-        initCarousel();
-        initPortfolioGrid();
-
-        // Reinitialize feather icons after dynamic content is added
-        feather.replace();
-      });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
